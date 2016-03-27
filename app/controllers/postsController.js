@@ -2,14 +2,14 @@ var Post = require('../models/Post');
 
 var postsController = {
   // GET all the posts
-  getAll: function(req, res) {
+  index: function(req, res) {
     Post.find({}, function(err, posts) {
       err ? console.log(err) : res.json(posts);
     });
   },
 
   // POST (create) a new post
-  createPost: function(req, res) {
+  create: function(req, res) {
     var question = req.body.question;
     var comment = req.body.comment;
     Post.create({question: question, comment: comment}, function(err, data) {
@@ -21,7 +21,7 @@ var postsController = {
   },
 
   // POST updates to a post
-  updatePost: function(req, res) {
+  update: function(req, res) {
     var id = req.params.id;
     var comment = req.body.comment;
     Post.findById(id, function (err, post) {
@@ -41,7 +41,7 @@ var postsController = {
   },
 
   // POST to delete a post
-  removePost: function(req, res) {
+  remove: function(req, res) {
     var id = req.params.id;
     Post.remove({_id: id}, function(err, data) {
       if (err) {
