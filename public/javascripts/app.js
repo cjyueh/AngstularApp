@@ -1,0 +1,1 @@
+angular.module('AngstularApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'PostCtrl', 'PostService']);

@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="AngstularApp">
 <head>
 	<meta charset="UTF-8">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+
+	<!-- JS -->
+	<script src="../bower_components/angular/angular.min.js"></script>
+	<script src="../bower_components/angular-route/angular-route.min.js"></script>
+
+	<!-- ANGULAR CUSTOM -->
+	<script src="javascripts/controllers/MainCtrl.js"></script>
+	<script src="javascripts/controllers/PostCtrl.js"></script>
+	<script src="javascripts/services/PostService.js"></script>
+	<script src="javascripts/appRoutes.js"></script>
+	<script src="javascripts/app.js"></script>
+
 	<title>Angstular</title>
 </head>
-<body>
-	Hello from Index!
+<body ng-controller="PostController">
+	<div class="container">
+		<nav class="navbar navbar-inverse">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">Stencil: Node and Angular</a>
+			</div>
+
+			<!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
+			<ul class="nav navbar-nav">
+			    <li><a href="/posts">Posts</a></li>
+			</ul>
+		</nav>
+
+		Hello from Index!
+
+		<div ng-view></div>
+	</div>
 </body>
 </html>
