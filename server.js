@@ -20,13 +20,17 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 //set static files
 app.use(express.static(__dirname + '/public'));
 
+//controllers
+var postsController = require('./app/controllers/postsController');
+
 //routes
-require('./app/routes')(app);
+var routes = require('./app/routes');
+app.use(routes);
 
 //listen on port
 app.listen(port, function() {
   console.log('app is listening on port ' + port);
 });
 
-//expose app
-exports = module.exports = app;
+// //expose app
+// exports = module.exports = app;
