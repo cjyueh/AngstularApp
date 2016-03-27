@@ -3,8 +3,9 @@ var Schema = mongoose.Schema;
 var Answer = require('./answer');
 
 var QuestionSchema = new Schema({
-  text: String,
-  answer: [AnswerSchema]
+  text: {type: String, required: true},
+  answer: [AnswerSchema],
+  createdAt: {type: Date, default: Date.now()}
 });
 
 var Question = mongoose.model('Question', QuestionSchema);
