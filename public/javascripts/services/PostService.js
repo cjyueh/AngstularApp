@@ -1,20 +1,17 @@
 //api calls from angular frontend to node backend
-var app = angular.module('PostService', []);
-app.factory('Post', ['$http', function($http) {
-  return {
-    // call to get all posts
-    get: function() {
-      return $http.get('/api/posts');
-    },
+var app = angular.module('AngstularApp', []);
+app.service('Post', PostFactory);
 
-    // call to POST and create a new post
-    create: function(post) {
-      return $http.post('/api/posts', post);
+function PostFactory($resource) {
+  return $resource('/posts/:id', { id: '@_id}' }, {
+    update: {
+      method: 'PUT' //this method issues at PUT request
     },
-
-    // call to DELETE a post
-    delete: function(id) {
-      return $http.delete('/api/posts/' + id);
+    query: {
+      isArray: true,
+      transformResponse: function(data) {
+        return angular.fromJson(data).posts;
+      }
     }
-  };
-}]);
+  });
+}
