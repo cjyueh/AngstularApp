@@ -2,6 +2,7 @@ var express        = require('express');
 var app            = express();
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
+var path           = require('path');
 
 //config db
 var db = require('./config/db');
@@ -29,7 +30,7 @@ app.use(routes);
 
 //handle all front-end angular requests
 app.get('*', function (req, res) {
-  res.sendFile('./public/views/index.html');
+  res.sendFile(path.join(__dirname + '/public/views/index.html'));
 });
 
 //listen on port
