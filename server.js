@@ -27,6 +27,11 @@ var postsController = require('./app/controllers/postsController');
 var routes = require('./app/routes');
 app.use(routes);
 
+//handle all front-end angular requests
+app.get('*', function (req, res) {
+  res.sendFile('./public/views/index.html');
+});
+
 //listen on port
 app.listen(port, function() {
   console.log('app is listening on port ' + port);
