@@ -1,1 +1,0 @@
-var app = angular.module('AngstularApp', ['ngRoute', 'ngResource', 'appRoutes', 'PostCtrl', 'PostService']);
