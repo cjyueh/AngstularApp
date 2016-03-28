@@ -1,11 +1,20 @@
 <div ng-controller="PostsCtrl">
+	<!-- a post -->
   <h3>{{post.question}}</h3>
+  <!-- list of comments for a post -->
   <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
-    <span class="glyphicon glyphicon-thumbs-up"
-      ng-click="incrementUpvotes(comment)"></span>
+    <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>
       {{comment.upvotes}} - by {{comment.author}}
     <span style="font-size:20px; margin-left:10px;">
       {{comment.body}}
     </span>
   </div>
+	<!-- form for creating new comments for a post -->
+	<form ng-submit="addComment()" style="margin-top:30px;">
+		<h3>Add a new comment</h3>
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Comment" ng-model="body"></input>
+		</div>
+		<button type="submit" class="btn btn-primary">ADD COMMENT</button>
+	</form>
 </div>
