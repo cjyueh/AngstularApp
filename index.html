@@ -11,8 +11,15 @@
 	<title>Angstular</title>
 </head>
 <body ng-controller="MainCtrl">
+	<!-- list of posts -->
 	<div ng-repeat="post in posts | orderBy: '-upvotes'">
-		{{ post.title }} - upvotes: {{ post.upvotes }}	
+		<span ng-click="incrementUpvotes(post)">^</span>
+		{{ post.question }} - upvotes: {{ post.upvotes }}	
 	</div>
+	<!-- form for creating new posts -->
+	<form ng-submit="addPost()">
+		<input type="text" placeholder="share your angstular" ng-model="question" />
+		<button type="submit">POST</button>
+	</form>
 </body>
 </html>
