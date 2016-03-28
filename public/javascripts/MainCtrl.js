@@ -1,6 +1,9 @@
 var app = angular.module('AngstularApp', []);
+app.controller('MainCtrl', MainCtrl);
 
-app.controller('MainCtrl', ['$scope', function($scope) {
+MainCtrl.$inject = ["$scope"];
+
+function MainCtrl($scope) {
   $scope.test = "Hello World!"; //check controller is linked to view
 
   $scope.posts = [
@@ -22,5 +25,4 @@ app.controller('MainCtrl', ['$scope', function($scope) {
   $scope.incrementUpvotes = function(post) {
     post.upvotes += 1;
   };
-
-}]);
+}
