@@ -29,10 +29,16 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
   });
 }
 
-app.factory('posts', [function() {
+app.factory('posts', ['$http', function() {
   //create new posts object with array property posts
   var postsObj = {
-    posts: [{question: 'hello from the postsObj', upvotes: 3}] //check that factory is working
+    // posts: [{question: 'hello from the postsObj', upvotes: 3}] //check that factory is working
+    posts: []
+  };
+  postsObj.getAll = function() {
+    return $http.get('/posts').success(function(data) {
+      angular.copy(data, postsObj.posts);
+    });
   };
   return postsObj;
 }]);

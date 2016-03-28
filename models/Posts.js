@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PostSchema = new Schema({
-  question: { type: String, required: true },
+  question: { type: String },
   upvotes: { type: Number, default: 0 },
   comments: [
     {
@@ -11,6 +11,11 @@ var PostSchema = new Schema({
     }
   ]
 });
+
+PostSchema.methods.upvote = function(cb) {
+  this.upvotes += 1;
+  this.save(cb);
+};
 
 var Post = mongoose.model('Post', PostSchema);
 module.exports = Post;
