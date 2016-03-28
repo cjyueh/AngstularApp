@@ -23,7 +23,11 @@ function MainCtrl($scope, posts) {
     }
     $scope.posts.push({
       question: $scope.question, 
-      upvotes: 0
+      upvotes: 0,
+      comments: [
+        {author: 'Christina', body: 'Good question!', upvotes: 0},
+        {author: 'Albert', body: 'Dunno what this is about.', upvotes: 0}
+      ]
     });
     $scope.question = ''; //clear form
   };

@@ -9,8 +9,14 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
     //home route
     .state('home', {
       url: '/',
-      templateUrl: 'templates/home.html',
+      templateUrl: 'templates/posts-index.html',
       controller: 'MainCtrl'
+    })
+    //get a post to see associated comments
+    .state('posts', {
+      url: '/posts/{id}', //{id} is route param
+      templateUrl: '/templates/posts-show.html',
+      controller: 'PostsCtrl'
     });
 
   //redirect unspecified routes to /

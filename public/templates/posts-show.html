@@ -1,0 +1,11 @@
+<div ng-controller="PostsCtrl">
+  <h3>{{post.question}}</h3>
+  <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
+    <span class="glyphicon glyphicon-thumbs-up"
+      ng-click="incrementUpvotes(comment)"></span>
+      {{comment.upvotes}} - by {{comment.author}}
+    <span style="font-size:20px; margin-left:10px;">
+      {{comment.body}}
+    </span>
+  </div>
+</div>
