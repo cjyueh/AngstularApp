@@ -11,6 +11,8 @@ var port = process.env.PORT || 3000;
 
 //set up mongoose
 mongoose.connect('mongodb://localhost/angstular-app');
+require('./models/Posts');
+require('./models/Comments');
 process.on('exit', function(){mongoose.disconnect();});
 
 var routes = require('./config/routes');
