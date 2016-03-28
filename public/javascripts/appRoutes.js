@@ -10,7 +10,12 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('home', {
       url: '/',
       templateUrl: 'templates/posts-index.html',
-      controller: 'MainCtrl'
+      controller: 'MainCtrl',
+      resolve: {
+        postPromise: ['posts', function(posts) {
+          return posts.getAll();
+        }]
+      }
     })
     //get a post to see associated comments
     .state('posts', {
