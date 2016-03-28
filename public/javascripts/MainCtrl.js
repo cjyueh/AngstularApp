@@ -21,7 +21,10 @@ function MainCtrl($scope, posts) {
     if (!$scope.question || $scope.question === '') {
       return;
     }
-    $scope.posts.push({question: $scope.question, upvotes: 4});
+    $scope.posts.push({
+      question: $scope.question, 
+      upvotes: 0
+    });
     $scope.question = ''; //clear form
   };
 
